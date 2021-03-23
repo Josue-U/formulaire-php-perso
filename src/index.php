@@ -38,7 +38,7 @@ if (isset($valider)) {
 
     <header>Inscription</header>
     <section>
-        <form name="form" method="post" action="">
+        <form name="form" method="post" action="index.php">
             <div class="label">Email</div>
             <div class="input">
                 <input type="text" name="email" value="<?php echo $email ?>" />
