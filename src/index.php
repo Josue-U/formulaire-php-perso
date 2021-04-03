@@ -1,24 +1,25 @@
 <?php
-@$email = $_POST['email'];
-@$nom = $_POST['nom'];
-@$prenom = $_POST['prenom'];
-@$age = $_POST['age'];
-@$valider = $_POST['valider'];
-$erreur = '';
-if (isset($valider)) {
-    if (empty($email) || !filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        $erreur = '<li>Email invalide !</li>';
+
+    @$email = $_POST['email'];
+    @$nom = $_POST['nom'];
+    @$prenom = $_POST['prenom'];
+    @$age = $_POST['age'];
+    @$valider = $_POST['valider'];
+    $erreur = '';
+    if (isset($valider)) {
+        if (empty($email) || !filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            $erreur = '<li>Email invalide !</li>';
+        }
+        if (empty($nom) || is_numeric($nom)) {
+            $erreur .= '<li>Nom invalide !</li>';
+        }
+        if (empty($prenom) || is_numeric($prenom)) {
+            $erreur .= '<li>Prénom invalide !</li>';
+        }
+        if (!is_numeric($age) || $age < 18) {
+            $erreur .= '<li>Age invalide ! (Tu dois au moins avoir 18 ans mfi/mfeille)</li>';
+        }
     }
-    if (empty($nom)) {
-        $erreur .= '<li>Nom laissé vide !</li>';
-    }
-    if (empty($prenom)) {
-        $erreur .= '<li>Prénom laissé vide !</li>';
-    }
-    if (!is_numeric($age) || $age < 18) {
-        $erreur .= '<li>Age invalide ! (Tu dois au moins avoir 18 ans mfi/mfeille)</li>';
-    }
-}
 
 ?>
 <!DOCTYPE html>
@@ -34,7 +35,7 @@ if (isset($valider)) {
 
 </head>
 
-<body>
+<body style="text-align: center;">
 
     <header>Inscription</header>
     <section>
@@ -53,7 +54,7 @@ if (isset($valider)) {
             </div>
             <div class="label">Age</div>
             <div class="input">
-                <input type="number" name="age" value="<?php echo $age ?>" />
+                <input type="text" name="age" value="<?php echo $age ?>" />
             </div>
             <div class="input">
                 <input type="submit" name="valider" value="M'inscrire" />
