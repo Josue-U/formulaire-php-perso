@@ -1,11 +1,11 @@
 <?php
 
-    @$email = $_POST['email'];
-    @$nom = $_POST['nom'];
-    @$prenom = $_POST['prenom'];
-    @$age = $_POST['age'];
-    @$valider = $_POST['valider'];
-    $erreur = '';
+    @$email = htmlspecialchars($_POST['email']);
+    @$nom = htmlspecialchars($_POST['nom']);
+    @$prenom = htmlspecialchars($_POST['prenom']);
+    @$age = htmlspecialchars($_POST['age']);
+    @$valider = htmlspecialchars($_POST['valider']);
+    @$erreur = '';
     if (isset($valider)) {
         if (empty($email) || !filter_var($email, FILTER_VALIDATE_EMAIL)) {
             $erreur = '<li>Email invalide !</li>';
