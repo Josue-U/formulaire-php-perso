@@ -4,7 +4,7 @@
     @$nom = htmlspecialchars($_POST['nom']);
     @$prenom = htmlspecialchars($_POST['prenom']);
     @$age = htmlspecialchars($_POST['age']);
-    @$valider = htmlspecialchars($_POST['valider']);
+    @$valider =$_POST['valider'];
     @$erreur = '';
     if (isset($valider)) {
         if (empty($email) || !filter_var($email, FILTER_VALIDATE_EMAIL)) {
